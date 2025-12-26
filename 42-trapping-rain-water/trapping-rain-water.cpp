@@ -1,20 +1,24 @@
 class Solution {
 public:
     int trap(vector<int>& height) {
+        
+        int Lmax = height[0],Rmax = height[height.size()-1];
 
-          vector<int>left(height.size()),right(height.size());
-          
-          left[0] = height[0];
-          right[height.size()-1] = height[height.size()-1];
-          for(int i=1;i<height.size();i++)  left[i] = max(left[i-1],height[i]);
-
-          for(int i=height.size()-2;i>=0;i--) right[i] = max(right[i+1],height[i]);
-          
-          int res = 0;
-          for(int i=0;i<height.size();i++){
-              
-               res += (min(left[i],right[i]) - height[i]);
-          }
-          return res;
+        int i=0,j=height.size()-1,res = 0;
+        while(i <= j){
+             
+              if(Lmax > Rmax){
+                 res +=max(Rmax-height[j],0);
+                 Rmax = max(height[j],Rmax);
+                 j--;
+              }
+              else{
+                  res += max(Lmax-height[i],0);
+                  Lmax = max(height[i],Lmax);
+                  i++;
+              }
+            //   cout<<Lmax<<" "<<Rmax<<"\n";
+        }
+        return res;
     }
 };
