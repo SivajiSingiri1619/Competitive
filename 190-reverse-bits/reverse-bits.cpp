@@ -2,19 +2,13 @@ class Solution {
 public:
     int reverseBits(int n) {
         string bin = "";
+        int k = 31,res=0;
         while(n > 0){
-             bin += to_string(n%2);
+            if(n%2 == 1) res += pow(2,k);
              n/=2;
+             k--;
         }
        
-        while(bin.size() < 32){
-             bin += "0";
-        }
-        int res = 0,k=0;
-        for(int i=bin.size()-1;i>=0;i--){
-            if(bin[i] == '1') res += pow(2,k);
-            k++;
-        }
         return res;
     }
 };
