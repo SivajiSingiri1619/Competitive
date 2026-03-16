@@ -19,7 +19,6 @@ public:
                   if((curr/2) < i.second) cnt1 += (i.second - (curr/2));         
              }
          }
-         cout<<cnt1;
           for(auto i:mp2){
             
              if((mp1[i.first] + i.second) % 2 != 0) return -1;
@@ -29,7 +28,7 @@ public:
                 if((curr/2) < i.second) cnt2+= (i.second - (curr/2));   
              }
          }
-         cout<<" "<<cnt2;
+
          return min(cnt1,cnt2);
     }
 };
