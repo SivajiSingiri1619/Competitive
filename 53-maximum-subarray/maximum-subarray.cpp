@@ -7,7 +7,7 @@ public:
         int maxi = dp[0];
         for(int i=1;i<n;i++){
             dp[i] = max(dp[i-1]+nums[i],nums[i]);
-            maxi = max(maxi,dp[i]);
+            maxi = maxi < dp[i] ? dp[i] : maxi;
         }
         return maxi;
     }
